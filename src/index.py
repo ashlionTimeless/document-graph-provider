@@ -6,7 +6,7 @@ import subprocess
 from flask import Flask, jsonify, request
 
 
-from graph.RetrieveLLamaIndex import retriever
+from graph.RetrieveLLamaIndex import RetrieverLlamaIndex
 from graph.DocumentToGraph import DocumentToGraph
 
 
@@ -36,9 +36,10 @@ def query_document():
 		data = request.json
 		#print(data)
 		document_id = data["document_id"]
+		index_name = "entity"
 		#print(message)
 		query = data["query"]
-		result = retriever.retrieve(document_id,query)
+		result = RetrieverLlamaIndex(index_name).retrieve(document_id,query)
 		#print("Server Result")
 		#print(result)
 		return jsonify({'response': result}), 200
