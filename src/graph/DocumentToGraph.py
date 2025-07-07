@@ -4,6 +4,6 @@ from .UploadIndexToGraph import UploadIndexToGraph
 
 class DocumentToGraph:
 
-    def run(self):
-        IndexFile().run()
-        UploadIndexToGraph().run()
+    def run(self,folder):
+        IndexFile().run(folder)
+        UploadIndexToGraph().run(folder)

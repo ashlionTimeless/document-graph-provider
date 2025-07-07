@@ -14,9 +14,11 @@ def upload_document():
 	try:
 		#print("received request")
 		data = request.json
+		document_id = data["document_id"]
+
 		#print(data)
 		#print(message)
-		result = DocumentToGraph().run()
+		result = DocumentToGraph().run(document_id)
 		#print("Server Result")
 		#print(result)
 		return jsonify({'response': result}), 200

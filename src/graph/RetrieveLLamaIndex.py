@@ -14,8 +14,6 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 
 from typing import Dict, Any
 
-from Driver import driver
-
 NEO4J_URI = os.environ.get("NEO4J_URI")
 NEO4J_USERNAME = os.environ.get("NEO4J_USERNAME")
 NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD")
