@@ -2,7 +2,7 @@ from llama_index.core.schema import TextNode
 from llama_index.core.vector_stores.utils import node_to_metadata_dict
 from llama_index.vector_stores.neo4jvector import Neo4jVectorStore
 from llama_index.core import VectorStoreIndex
-from db_query import db_query
+from .db_query import db_query
 
 index_name = "entity"
 
