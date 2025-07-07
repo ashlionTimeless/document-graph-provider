@@ -12,8 +12,10 @@ class IndexFile:
     
     def run_index(self,folder):
         cmd = [
-            "python3", "/var/www/html/ragtest/script.py"
-        ]
+        "python3", "-m", "graphrag", "index",
+        "--config", f"{MS_GRAPHRAG_ROOT}/settings.yaml",
+        "--root", f"{MS_GRAPHRAG_ROOT}/{folder}/",
+        "--output", f"{MS_GRAPHRAG_ROOT}/{folder}/output"]
         print(cmd)
         try:
             print("before")
