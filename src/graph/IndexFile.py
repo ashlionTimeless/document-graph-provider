@@ -12,18 +12,16 @@ class IndexFile:
     
     def run_index(self,folder):
         cmd = [
-        "python3", "-m", "graphrag", "index",
+        "graphrag", "index",
         "--config", f"{MS_GRAPHRAG_ROOT}/settings.yaml",
         "--root", f"{MS_GRAPHRAG_ROOT}/{folder}/",
         "--output", f"{MS_GRAPHRAG_ROOT}/{folder}/output"]
         print(cmd)
         try:
-            print("before")
+            print("indexing started")
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-            print("after")
-            print(result)
+            print("indexing completed")
             output = result.stdout
-            print(output)
             return output
         except subprocess.CalledProcessError as e:
                 error_message = f"An error occurred: {e.stderr}"
