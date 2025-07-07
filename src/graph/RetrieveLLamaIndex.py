@@ -1,18 +1,7 @@
 import os
-from neo4j import GraphDatabase, Result
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import tiktoken
-import numpy as np
-from llama_index.core.schema import TextNode
-from llama_index.core.vector_stores.utils import node_to_metadata_dict
 from llama_index.vector_stores.neo4jvector import Neo4jVectorStore
 from llama_index.core import VectorStoreIndex
-from tqdm import tqdm
 from llama_index.embeddings.openai import OpenAIEmbedding
-
-from typing import Dict, Any
 
 NEO4J_URI = os.environ.get("NEO4J_URI")
 NEO4J_USERNAME = os.environ.get("NEO4J_USERNAME")

@@ -2,13 +2,12 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-RUN python -m pip install -U pip setuptools wheel spacy numpy flask langchain langdetect presidio_analyzer presidio_anonymizer
-RUN python -m spacy download en
-RUN python -m spacy download uk_core_news_sm
-RUN python -m spacy download ru_core_news_sm
+RUN python -m pip install -U pip setuptools numpy
+RUN python -m pip install graphrag
+RUN python -m pip install dotenv flask neo4j llama_index neo4j-driver pandas
 
 COPY . .
 
-EXPOSE 4444
+EXPOSE 6000
 
-CMD ["python", "server.py"]
+CMD ["python", "src/index.py"]
