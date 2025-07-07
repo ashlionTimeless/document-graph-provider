@@ -1,5 +1,6 @@
 import os
 import subprocess
+MS_GRAPHRAG_ROOT = os.environ.get("MS_GRAPHRAG_ROOT")
 
 cmd_template = [
         "python3", "-m", "graphrag index",
@@ -12,9 +13,9 @@ class IndexFile:
     def run_index(self,folder):
         cmd = [
         "python3", "-m", "graphrag", "index",
-        "--config", "./settings.yaml",
-        "--root", f"./{folder}/",
-        "--output", f"./{folder}/output"]
+        "--config", f"{MS_GRAPHRAG_ROOT}/settings.yaml",
+        "--root", f"{MS_GRAPHRAG_ROOT}/{folder}/",
+        "--output", f"{MS_GRAPHRAG_ROOT}/{folder}/output"]
         print(cmd)
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
