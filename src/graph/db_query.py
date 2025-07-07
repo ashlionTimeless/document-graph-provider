@@ -1,7 +1,7 @@
 from typing import Dict, Any
 import pandas as pd
 from neo4j import GraphDatabase, Result
-from neo4j.Driver import driver
+from .Driver import driver
 
 
 def db_query(cypher: str, params: Dict[str, Any] = {}) -> pd.DataFrame:
