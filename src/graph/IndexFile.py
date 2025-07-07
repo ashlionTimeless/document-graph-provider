@@ -15,9 +15,11 @@ class IndexFile:
         "--config", "./settings.yaml",
         "--root", f"./{folder}/",
         "--output", f"./{folder}/output"]
+        print(cmd)
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             output = result.stdout
+            print(output)
             return output
         except subprocess.CalledProcessError as e:
                 error_message = f"An error occurred: {e.stderr}"
