@@ -1,4 +1,7 @@
 # import modules for server
+from dotenv import load_dotenv
+load_dotenv()
+
 import subprocess
 from flask import Flask, jsonify, request
 
