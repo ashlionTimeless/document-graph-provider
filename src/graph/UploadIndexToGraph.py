@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import time
 
-from neo4j.Driver import driver
+from Driver import driver
 from PrepareVectorLlamaIndex import PrepareVectorLlamaIndex
 
 NEO4J_DATABASE = os.environ.get("NEO4J_DATABASE")
