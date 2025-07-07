@@ -7,6 +7,7 @@ from .Driver import driver
 from .PrepareVectorLlamaIndex import PrepareVectorLlamaIndex
 
 NEO4J_DATABASE = os.environ.get("NEO4J_DATABASE")
+MS_GRAPHRAG_ROOT = os.environ.get("MS_GRAPHRAG_ROOT")
 
 class UploadIndexToGraph:
     
@@ -61,7 +62,7 @@ class UploadIndexToGraph:
         return True
 
     def fetch_documents(self,folder):
-        doc_df = pd.read_parquet(f'{folder}/output/documents.parquet', columns=["id", "title"])
+        doc_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/documents.parquet', columns=["id", "title"])
         doc_df.head(2)
         return doc_df
 
@@ -77,7 +78,7 @@ class UploadIndexToGraph:
 
 
     def fetch_text_units(self,folder):
-        text_df = pd.read_parquet(f'{folder}/output/text_units.parquet',
+        text_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/text_units.parquet',
                             columns=["id","text","n_tokens","document_ids"])
         text_df.head(2)
         return text_df
@@ -96,13 +97,13 @@ class UploadIndexToGraph:
         return True
 
     def fetch_entities(self,folder):
-        entity_df = pd.read_parquet(f'{folder}/output/entities.parquet',
+        entity_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/entities.parquet',
                                     columns=["title","type","description","human_readable_id","id","text_unit_ids"])
         entity_df.head(2)
         return entity_df
 
     def fetch_entity_embeddings(self,folder):
-        entity_embedding_df = pd.read_parquet(f'{folder}/output/embeddings.entity.description.parquet',
+        entity_embedding_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/embeddings.entity.description.parquet',
                                             columns=["id","embedding"])
         entity_embedding_df.head(2)
         entity_embedding_df = entity_embedding_df.rename(columns={"embedding": "description_embedding"})
@@ -129,7 +130,7 @@ class UploadIndexToGraph:
         return True
 
     def fetch_relationships(self,folder):
-        rel_df = pd.read_parquet(f'{folder}/output/relationships.parquet',
+        rel_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/relationships.parquet',
                                 columns=["source","target","id","combined_degree","weight","human_readable_id","description","text_unit_ids"])
         rel_df.head(2)
         return rel_df
@@ -147,7 +148,7 @@ class UploadIndexToGraph:
         return True
 
     def fetch_communities(self,folder):
-        community_df = pd.read_parquet(f'{folder}/output/communities.parquet', 
+        community_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/communities.parquet', 
                             columns=["id","level","title","text_unit_ids","relationship_ids"])
         community_df.head(2)
         return community_df
@@ -173,7 +174,7 @@ class UploadIndexToGraph:
         return True
 
     def fetch_community_reports(self,folder):
-        community_report_df = pd.read_parquet(f'{folder}/output/community_reports.parquet',
+        community_report_df = pd.read_parquet(f'{MS_GRAPHRAG_ROOT}/{folder}/output/community_reports.parquet',
                                     columns=["id","community","level","title","summary", "findings","rank","rating_explanation","full_content"])
         community_report_df.head(2)
         return community_report_df
