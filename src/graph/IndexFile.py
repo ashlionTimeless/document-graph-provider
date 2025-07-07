@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-cmd = [
+cmd_template = [
         "python3", "-m", "graphrag index",
         "--root", "./resume-matching",
         "--method", "local",
@@ -11,7 +11,7 @@ class IndexFile:
     
     def run_index(self,folder):
         cmd = [
-        "graphrag index",
+        "python3", "-m", "graphrag", "index",
         "--config", "./settings.yaml",
         "--root", f"./{folder}/",
         "--output", f"./{folder}/output"]
