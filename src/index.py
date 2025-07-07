@@ -1,7 +1,8 @@
 # import modules for server
 from dotenv import load_dotenv
 load_dotenv()
-
+import os
+PORT = os.environ.get("PORT")
 import subprocess
 from flask import Flask, jsonify, request
 
@@ -48,4 +49,4 @@ def query_document():
 		return "Error",400
 
 if __name__ == '__main__':
-	app.run(host="0.0.0.0", port=4404)
+	app.run(host="0.0.0.0", port=PORT)
