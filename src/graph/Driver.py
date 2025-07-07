@@ -1,3 +1,4 @@
+import os
 from neo4j import GraphDatabase
 
 NEO4J_URI = os.environ.get("NEO4J_URI")
