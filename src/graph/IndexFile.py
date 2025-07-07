@@ -16,6 +16,10 @@ class IndexFile:
         "--config", f"{MS_GRAPHRAG_ROOT}/settings.yaml",
         "--root", f"{MS_GRAPHRAG_ROOT}/{folder}/",
         "--output", f"{MS_GRAPHRAG_ROOT}/{folder}/output"]
+
+        cmd = [
+            "python3", "/var/www/html/ragtest/script.py"
+        ]
         print(cmd)
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
