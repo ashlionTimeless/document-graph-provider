@@ -25,6 +25,7 @@ class IndexFile:
             return output
         except subprocess.CalledProcessError as e:
                 error_message = f"An error occurred: {e.stderr}"
+                print(error_message)
 
     def run(self,folder):
         self.run_index(folder)
